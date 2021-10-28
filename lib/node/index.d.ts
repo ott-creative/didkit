@@ -22,6 +22,12 @@ declare module "didkit" {
     checks: string[];
   }
 
+  declare interface ResolutionResult {
+    didDocument: object;
+    didResolutionMetadata: object | null;
+    didDocumentMetadata: object;
+  }
+
   declare type Method =
     | "key"
     | "tz"
@@ -58,4 +64,6 @@ declare module "didkit" {
   function verifyInvocationSignature(inv: any, options: Options): VerifyResult;
 
   function jwkFromTezosKey(key: string): Ed25519Key;
+
+  function didResolve(did: string): ResolutionResult;
 }
