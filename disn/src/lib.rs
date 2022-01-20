@@ -31,13 +31,13 @@ pub fn app(pg_pool: PgPool) -> Router {
         .into_inner();
 
     let auth_api = Router::new()
-        .route("/login", post(handlers::login))
-        .route("/register", post(handlers::register));
-    let vc_api = Router::new().route("/template", post(handlers::vc_tplt_create));
+        .route("/login", post(handlers::user::login))
+        .route("/register", post(handlers::user::register));
+    let vc_api = Router::new().route("/template", post(handlers::vc::vc_tplt_create));
 
     Router::new()
         .nest("/api/:v/auth", auth_api)
         .nest("/api/:v/vc", vc_api)
-        .route("/api/:v/echo", get(handlers::echo))
+        .route("/api/:v/echo", get(handlers::user::echo))
         .layer(middleware_stack)
 }
