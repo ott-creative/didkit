@@ -36,6 +36,7 @@ reqwest = { version = "0.11", features = ["json"] }
 didkit = { version = "0.3", path = "../lib", features = ["http-did"] }
 didkit-cli = { version = "^0.1.1", path = "../cli" }
 ssi = { version = "0.3", path = "../../ssi", default-features = false }
+did-method-key = { version = "0.1", path = "../../ssi/did-key" }
 
 [[bin]]
 name = "disn"

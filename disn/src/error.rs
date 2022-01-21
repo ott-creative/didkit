@@ -20,6 +20,8 @@ pub enum Error {
     AxumExtensionError(#[from] axum::extract::rejection::ExtensionRejection),
     #[error(transparent)]
     ValidationError(#[from] validator::ValidationErrors),
+    #[error(transparent)]
+    SsiDidJwkGenerationError(#[from] ssi::error::Error),
     #[error("wrong credentials")]
     WrongCredentials,
     #[error("password doesn't match")]
@@ -30,6 +32,8 @@ pub enum Error {
     DuplicateUserName,
     #[error("name is already taken")]
     DuplicateVcTpltName,
+    #[error("DID generate error")]
+    DidGenerateError,
 }
 pub type Result<T> = std::result::Result<T, Error>;
 
