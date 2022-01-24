@@ -37,9 +37,9 @@ pub fn app(pg_pool: PgPool) -> Router {
     let did_api = Router::new().route("/create", post(handlers::did::did_create));
 
     Router::new()
+        .route("/api/:v/health_check", get(handlers::health_check))
         .nest("/api/:v/auth", auth_api)
         .nest("/api/:v/vc", vc_api)
         .nest("/api/:v/did", did_api)
-        .route("/api/:v/echo", get(handlers::user::echo))
         .layer(middleware_stack)
 }
