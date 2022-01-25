@@ -11,7 +11,9 @@ bcrypt = "0.10"
 chrono = { version = "0.4", features = ["serde"] }
 clap = { version = "3.0.0-rc.4", features = ["derive", "env"] }
 dotenv = "0.15"
+futures = "0.3.19"
 headers = "0.3"
+hyper = "0.14.16"
 jsonwebtoken = "7.2"
 lazy_static = "1.4"
 rayon = "1.5"
@@ -37,6 +39,9 @@ didkit = { version = "0.3", path = "../lib", features = ["http-did"] }
 didkit-cli = { version = "^0.1.1", path = "../cli" }
 ssi = { version = "0.3", path = "../../ssi", default-features = false }
 did-method-key = { version = "0.1", path = "../../ssi/did-key" }
+
+[lib]
+path = "src/lib.rs"
 
 [[bin]]
 name = "disn"

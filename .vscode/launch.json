@@ -1,0 +1,290 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'didkit-http'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=didkit-http"
+                ],
+                "filter": {
+                    "name": "didkit-http",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'didkit-http'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=didkit-http",
+                    "--package=didkit-http"
+                ],
+                "filter": {
+                    "name": "didkit-http",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'didkit-http'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=didkit-http",
+                    "--package=didkit-http"
+                ],
+                "filter": {
+                    "name": "didkit-http",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'main'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=main",
+                    "--package=didkit-http"
+                ],
+                "filter": {
+                    "name": "main",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'didkit'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=didkit"
+                ],
+                "filter": {
+                    "name": "didkit",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'vc'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=vc",
+                    "--package=didkit"
+                ],
+                "filter": {
+                    "name": "vc",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'didkit-cli'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=didkit-cli"
+                ],
+                "filter": {
+                    "name": "didkit-cli",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'didkit'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=didkit",
+                    "--package=didkit-cli"
+                ],
+                "filter": {
+                    "name": "didkit",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'didkit'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=didkit",
+                    "--package=didkit-cli"
+                ],
+                "filter": {
+                    "name": "didkit",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'cli'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=cli",
+                    "--package=didkit-cli"
+                ],
+                "filter": {
+                    "name": "cli",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'didkit-cbindings'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=didkit-cbindings"
+                ],
+                "filter": {
+                    "name": "didkit-cbindings",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in library 'disn'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--lib",
+                    "--package=disn"
+                ],
+                "filter": {
+                    "name": "disn",
+                    "kind": "lib"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'disn'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=disn",
+                    "--package=disn"
+                ],
+                "filter": {
+                    "name": "disn",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'disn'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=disn",
+                    "--package=disn"
+                ],
+                "filter": {
+                    "name": "disn",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug integration test 'health_check'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--test=health_check",
+                    "--package=disn"
+                ],
+                "filter": {
+                    "name": "health_check",
+                    "kind": "test"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

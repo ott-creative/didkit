@@ -2,10 +2,9 @@ use chrono::Utc;
 use sqlx::PgPool;
 
 use crate::{
-    dto::{LoginInput, RegisterInput, VcTpltInput},
+    dto::VcTpltInput,
     error::{Error, Result},
-    model::{CreateUserData, CreateVcTpltData, User, VcTplt},
-    utils::encryption,
+    model::{CreateVcTpltData, VcTplt},
 };
 
 pub struct VcTpltService;
@@ -25,4 +24,7 @@ impl VcTpltService {
         };
         Ok(VcTplt::create(data, &pool).await?)
     }
+
+    // Make a VC template instance
+    //pub async fn publish(tplt_id: Uuid, fields: String, pool: &PgPool) -> Result<VcTplt> {}
 }

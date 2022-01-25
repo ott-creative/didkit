@@ -5,25 +5,11 @@ use sqlx::PgPool;
 
 use crate::{
     config::constants::BEARER,
-    dto::{LoginInput, RegisterInput, TokenPayload, VcTpltInput},
+    dto::{LoginInput, RegisterInput, TokenPayload},
     error::{ApiResult, Error},
-    model::{User, VcTplt},
-    service::{user::AuthService, vc::VcTpltService},
+    service::user::AuthService,
     utils::{jwt, validate_payload},
 };
-
-pub async fn authorize(user: User) -> Json<User> {
-    Json(user)
-}
-
-pub async fn echo() -> ApiResult<Json<ApiSuccess<String>>> {
-    Ok(Json(ApiSuccess {
-        api_version: API_VERSION.to_string(),
-        body: Success {
-            data: "hello".to_string(),
-        },
-    }))
-}
 
 pub async fn login(
     Json(input): Json<LoginInput>,

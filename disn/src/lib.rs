@@ -5,11 +5,17 @@ extern crate serde;
 
 use axum::{
     routing::{get, post},
-    AddExtensionLayer, Router,
+    AddExtensionLayer, Router, Server,
 };
+use futures::Future;
+use hyper;
 use sqlx::PgPool;
 use tower::ServiceBuilder;
 use tower_http::{cors::CorsLayer, trace::TraceLayer};
+
+use std::net::SocketAddr;
+
+use clap::Parser;
 
 mod dto;
 mod error;
@@ -23,7 +29,7 @@ mod utils;
 
 pub mod config;
 
-pub fn app(pg_pool: PgPool) -> Router {
+fn app(pg_pool: PgPool) -> Router {
     let middleware_stack = ServiceBuilder::new()
         .layer(TraceLayer::new_for_http())
         .layer(CorsLayer::permissive())
@@ -42,4 +48,11 @@ pub fn app(pg_pool: PgPool) -> Router {
         .nest("/api/:v/vc", vc_api)
         .nest("/api/:v/did", did_api)
         .layer(middleware_stack)
+}
+
+pub fn server(pg_pool: PgPool) -> impl Future<Output = hyper::Result<()>> {
+    let config = config::env::ServerConfig::parse();
+    let addr = SocketAddr::from((config.host, config.port));
+    tracing::info!("listening on {}", addr);
+    axum::Server::bind(&addr).serve(app(pg_pool).into_make_service())
 }

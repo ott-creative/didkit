@@ -4,12 +4,11 @@ use axum::{extract::Extension, http::StatusCode, Json};
 use sqlx::PgPool;
 
 use crate::{
-    config::constants::BEARER,
-    dto::{LoginInput, RegisterInput, TokenPayload, VcTpltInput},
-    error::{ApiResult, Error},
+    dto::VcTpltInput,
+    error::ApiResult,
     model::{User, VcTplt},
-    service::{user::AuthService, vc::VcTpltService},
-    utils::{jwt, validate_payload},
+    service::vc::VcTpltService,
+    utils::validate_payload,
 };
 
 pub async fn vc_tplt_create(
@@ -28,3 +27,5 @@ pub async fn vc_tplt_create(
         }),
     ))
 }
+
+//pub async fn vc_issue(user: User,)

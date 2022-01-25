@@ -2,9 +2,9 @@ use chrono::Utc;
 use sqlx::PgPool;
 
 use crate::{
-    dto::{LoginInput, RegisterInput, VcTpltInput},
+    dto::{LoginInput, RegisterInput},
     error::{Error, Result},
-    model::{CreateUserData, CreateVcTpltData, User, VcTplt},
+    model::{CreateUserData, User},
     utils::encryption,
 };
 
