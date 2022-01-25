@@ -1,4 +1,6 @@
+use clap::Parser;
 use disn::config;
+use std::net::TcpListener;
 use tracing_subscriber::EnvFilter;
 
 #[tokio::main]
@@ -11,8 +13,12 @@ async fn main() {
 
     use config::db::DbPool;
     let pg_pool = sqlx::PgPool::retrieve().await;
+    let config = config::env::ServerConfig::parse();
+    let addr = format!("{}:{}", config.host, config.port);
+    tracing::info!("listening on {}", addr);
+    let listener = TcpListener::bind(addr).expect("Failed to bind on port");
 
-    let server = disn::server(pg_pool);
+    let server = disn::server(pg_pool, listener);
 
     if let Err(err) = server.await {
         tracing::error!("server error : {:?}", err);

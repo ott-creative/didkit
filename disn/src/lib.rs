@@ -5,7 +5,7 @@ extern crate serde;
 
 use axum::{
     routing::{get, post},
-    AddExtensionLayer, Router, Server,
+    AddExtensionLayer, Router,
 };
 use futures::Future;
 use hyper;
@@ -13,9 +13,7 @@ use sqlx::PgPool;
 use tower::ServiceBuilder;
 use tower_http::{cors::CorsLayer, trace::TraceLayer};
 
-use std::net::SocketAddr;
-
-use clap::Parser;
+use std::net::TcpListener;
 
 mod dto;
 mod error;
@@ -50,9 +48,9 @@ fn app(pg_pool: PgPool) -> Router {
         .layer(middleware_stack)
 }
 
-pub fn server(pg_pool: PgPool) -> impl Future<Output = hyper::Result<()>> {
-    let config = config::env::ServerConfig::parse();
-    let addr = SocketAddr::from((config.host, config.port));
-    tracing::info!("listening on {}", addr);
-    axum::Server::bind(&addr).serve(app(pg_pool).into_make_service())
+/// Provide database connection, and TCP listener, this can be different in production build and test build
+pub fn server(pg_pool: PgPool, listener: TcpListener) -> impl Future<Output = hyper::Result<()>> {
+    axum::Server::from_tcp(listener)
+        .unwrap()
+        .serve(app(pg_pool).into_make_service())
 }
