@@ -1,4 +1,4 @@
-declare module "didkit" {
+declare module "@spruceid/didkit" {
   interface Ed25519Key {
     kty: string;
     crv: string;
@@ -20,6 +20,20 @@ declare module "didkit" {
     errors: string[];
     warnings: string[];
     checks: string[];
+  }
+
+  interface ResolutionInputMetadata {
+    accept?: string;
+    versionId?: string;
+    versionTime?: string;
+    noCache?: boolean;
+    propertySet?: object;
+  }
+
+  interface ResolutionResult {
+    didDocument: object;
+    didResolutionMetadata: object | null;
+    didDocumentMetadata: object;
   }
 
   type Method =
@@ -78,4 +92,9 @@ declare module "didkit" {
   function verifyInvocationSignature(inv: any, options: Options): VerifyResult;
 
   function jwkFromTezosKey(key: string): Ed25519Key;
+
+  function didResolve(
+    did: string,
+    inputMetadata: ResolutionInputMetadata
+  ): ResolutionResult;
 }
