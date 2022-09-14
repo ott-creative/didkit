@@ -24,7 +24,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
         registry
                 .addHandler(handler(), "/wss/verifiable-presentation-request")
-                .setAllowedOrigins("https://" + Resources.baseUrl);
+                .setAllowedOrigins("http://" + Resources.baseUrl);
     }
 
     @Bean

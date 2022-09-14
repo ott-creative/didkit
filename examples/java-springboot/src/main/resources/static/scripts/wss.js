@@ -3,7 +3,7 @@ $(document).ready(async function() {
     let uuid = $('#vp-request-form').data("uuid");
 
     $('#collapse-pres').on('show.bs.collapse', () => {
-        ws = new WebSocket('wss://' + window.location.host + '/wss/verifiable-presentation-request');
+        ws = new WebSocket('ws://' + window.location.host + '/wss/verifiable-presentation-request');
         ws.addEventListener('open', (event) => {
             ws.send(uuid);
         });

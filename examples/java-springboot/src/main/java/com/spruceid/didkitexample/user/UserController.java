@@ -37,7 +37,7 @@ public class UserController {
     @GetMapping("/sign-in")
     ModelAndView signIn() throws Exception {
         final String uuid = UUID.randomUUID().toString();
-        final String url = "https://" + Resources.baseUrl + "/verifiable-presentation-request/" + uuid;
+        final String url = "http://" + Resources.baseUrl + "/verifiable-presentation-request/" + uuid;
         final ModelAndView model = QRCode.getModelAndView("sign-in", url);
         model.addObject("uuid", uuid);
         return model;
@@ -50,7 +50,7 @@ public class UserController {
         final String uuid = UUID.randomUUID().toString();
         redisTemplate.opsForValue().set(uuid, user.getUsername());
         redisTemplate.expire(uuid, Duration.ofSeconds(90));
-        final String url = "https://" + Resources.baseUrl + "/credential-offer/" + uuid;
+        final String url = "http://" + Resources.baseUrl + "/credential-offer/" + uuid;
         return QRCode.getModelAndView("credential", url);
     }
 
